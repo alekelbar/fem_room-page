@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <title>Frontend Mentor | Room homepage</title>
+</head>
+
+<body>
+  <main class="main">
+    <section id="hero" class="hero">
+      <section class="hero__nav">
+        <img id="hamburger" onclick="toggleMenu()" class="hero__hamburger"
+          src="./images/icon-hamburger.svg" alt="" />
+        <ul id="list" class="hero__list">
+          <img class="hero__list-close" onclick="toggleMenu()" src="./images/icon-close.svg">
+          <li><a class="hero__list-item" href="#">home</a></li>
+          <li><a class="hero__list-item" href="#">shop</a></li>
+          <li><a class="hero__list-item" href="#">about</a></li>
+          <li><a class="hero__list-item" href="#">contact</a></li>
+          </div>
+        </ul>
+          <img id="logo" class="hero__logo" src="./images/logo.svg" alt="" />
+      </section>
+    </section>
+
+    <section class="cta">
+      <div class="cta__container container">
+        <h1 class="cta__title">Discover innovative ways to decorate</h1>
+        <p class="cta__paragraph">
+          We provide unmatched quality, comfort, and style for property owners
+          across the country. Our experts combine form and function in
+          bringing your vision to life. Create a room in your own style with
+          our collection and make your property a reflection of you and what
+          you love.
+        </p>
+        <div class="cta__action-container">
+          <a href="#" class="cta__action">
+            shop now
+            <img src="./images/icon-arrow.svg" class="cta__img" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="img-1"></div>
+
+    <section class="about">
+      <div class="about__container container">
+        <h3 class="about__title">About our furniture</h3>
+        <p class="about__paragraph">
+          We provide unmatched quality, comfort, and style for property owners
+          across the country. Our experts combine form and function in
+          bringing your vision to life. Create a room in your own style with
+          our collection and make your property a reflection of you and what
+          you love.
+        </p>
+      </div>
+    </section>
+
+    <div class="img-2"></div>
+
+    <div class="controls">
+      <img id="before" class="controls__img" src="./images/icon-angle-left.svg" alt="" onclick="before()" />
+      <img id="next" class="controls__img" src="./images/icon-angle-right.svg" alt="" onclick="next()" />
+    </div>
+
+  </main>
+  <script>
+    const getNumber = (value) => {
+      for (i = value.length; i >= 0; i--) {
+        if (!isNaN(value[i])) {
+          return value[i];
+        }
+      }
+    };
+
+    const before = () => {
+      const $hero = document.getElementById("hero");
+
+      const style = getComputedStyle($hero);
+      const value = style.getPropertyValue("background-image");
+      const num = parseInt(getNumber(value));
+
+      const width = window.innerWidth;
+      $hero.style.backgroundImage = `url("./../images/${width >= 768 ? 'desktop' : 'mobile'}-image-hero-${num - 1 > 0 ? num - 1 : num
+        }.jpg")`;
+    };
+
+    const next = () => {
+      const $hero = document.getElementById("hero");
+
+      const style = getComputedStyle($hero);
+      const value = style.getPropertyValue("background-image");
+      const num = parseInt(getNumber(value));
+
+      const width = window.innerWidth;
+      $hero.style.backgroundImage = `url("./../images/${width >= 768 ? 'desktop' : 'mobile'}-image-hero-${num + 1 <= 3 ? num + 1 : num
+        }.jpg")`;
+    };
+
+    const toggleMenu = () => {
+      const $hamburger = document.getElementById('hamburger')
+      const $logo = document.getElementById('logo');
+      const $list = document.getElementById('list');
+
+      $hamburger.classList.toggle('hero__hamburger--hidden')
+      $logo.classList.toggle('hero__logo--hidden')
+      $list.classList.toggle('hero__list--active');
+
+    }
+  </script>
+</body>
+
+</html>

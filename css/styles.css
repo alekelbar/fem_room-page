@@ -1,0 +1,292 @@
+:root {
+  --Dark-Gray: hsl(0, 0%, 63%);
+  --Black: hsl(0, 0%, 0%);
+  --White: hsl(0, 0%, 100%);
+  --Very-Dark-Gray: hsl(0, 0%, 27%);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.main {
+  display: grid;
+  max-width: 1440px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, max-content);
+  grid-template-areas:
+    "hero"
+    "cta"
+    "img-1"
+    "about"
+    "img-2";
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero {
+  grid-area: hero;
+  background-image: url("./../images/mobile-image-hero-1.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 450px;
+  animation: parpadear 2s infinite alternate ease-in;
+  position: relative;
+}
+
+.hero__nav {
+  display: flex;
+  position: relative;
+  padding: 40px 10px;
+  height: 100px;
+  width: 100%;
+}
+
+.hero__logo {
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.hero__list {
+  list-style-type: none;
+  gap: 40px;
+  font-size: 15px;
+  display: none;
+}
+
+.hero__list--active {
+  display: flex;
+  justify-content: end;
+  position: fixed;
+  padding: 30px;
+  background-color: var(--White);
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.hero__hamburger--hidden {
+  display: none;
+}
+
+.hero__logo--hidden {
+  display: none;
+}
+
+.hero__list-item {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.hero__list-close {
+  position: fixed;
+  top: 25px;
+  left: 20px;
+  width: 20px;
+}
+
+.hero__list-close:hover {
+  /* color: rgb(156, 47, 47); */
+  border: 2px solid var(--Black);
+  padding: 2px;
+}
+
+.hero__list-item:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .hero__list {
+    font-size: 2em;
+  }
+
+  .hero__list-close {
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    width: 40px;
+  }
+}
+
+
+@keyframes parpadear {
+  0% {
+    opacity: 0.5;
+    background-position-x: 10%;
+  }
+
+  100% {
+    opacity: 1;
+    background-position-x: 100%;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-area: hero;
+  justify-self: end;
+  align-self: end;
+  background-color: var(--Black);
+  height: 45px;
+  width: 90px;
+  position: relative;
+}
+
+.controls__img {
+  width: 30%;
+  height: 50%;
+}
+
+.controls__img::hover {
+  width: 20%;
+}
+
+.cta {
+  grid-area: cta;
+  margin: 0 auto;
+  text-align: start;
+}
+
+.cta__container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.cta__title {
+  font-size: xx-large;
+  padding: 10px 0;
+}
+
+.cta__paragraph {
+  color: var(--Dark-Gray);
+  padding: 10px 0;
+  line-height: 20px 0;
+}
+
+.cta__action-container {
+  padding: 10px 0;
+  color: var(--Black);
+  text-transform: uppercase;
+}
+
+.cta__action {
+  padding: 10px 0;
+  text-decoration: none;
+  color: var(--Black);
+  font-weight: bold;
+  letter-spacing: 10px;
+}
+
+.img-1 {
+  grid-area: img-1;
+  width: 100%;
+  height: 200px;
+  background-image: url("./../images/image-about-dark.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about {
+  grid-area: about;
+}
+
+.about__container {
+  padding: 20px;
+  color: var(--Black);
+}
+
+.about__title {
+  text-align: start;
+  font-size: medium;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+
+.about__paragraph {
+  color: var(--Dark-Gray);
+  line-height: 20px;
+  text-align: start;
+}
+
+.img-2 {
+  grid-area: img-2;
+  width: 100%;
+  height: 200px;
+  background-image: url("./../images/image-about-light.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .main {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, max-content);
+    grid-template-areas:
+      "hero hero hero hero hero hero cta cta cta cta"
+      "img-1 img-1 img-1 about about about about img-2 img-2 img-2";
+  }
+
+  .controls {
+    grid-area: cta;
+    justify-self: start;
+  }
+
+  .hero {
+    background-image: url("./../images/desktop-image-hero-1.jpg");
+    background-size: cover;
+    animation: parpadear 2s infinite alternate ease-in;
+  }
+
+  .hero__nav {
+    display: flex;
+    padding: 40px 20px;
+    height: 100px;
+  }
+
+  .hero__logo {
+    margin: 0;
+    max-width: 100px;
+  }
+
+  .hero__list {
+    display: flex;
+    color: var(--White);
+    font-size: small;
+    order: 1;
+    align-self: flex-end;
+  }
+
+  .hero__list-item {
+    color: var(--White);
+  }
+
+  .hero__hamburger {
+    display: none;
+  }
+
+  .hero__list-close {
+    display: none;
+  }
+}
